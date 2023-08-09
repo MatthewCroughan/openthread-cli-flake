@@ -28,7 +28,7 @@
           exit 1
       fi
       ${pkgs.nrfutil}/bin/nrfutil pkg generate --hw-version 52 --sd-req 0x00 --debug-mode --application ${packages.x86_64-linux.default}/zephyr.hex "$TMPDIR/dfu.zip"
-      ${pkgs.nrfutil}/bin/nrfutil dfu usb-serial -pkg dfu.zip -p "$1" -b 115200
+      ${pkgs.nrfutil}/bin/nrfutil dfu usb-serial -pkg "$TMPDIR/dfu.zip" -p "$1" -b 115200
     '';
     packages.x86_64-linux.default = pkgs.mkZephyrProject {
       name = "cli";
